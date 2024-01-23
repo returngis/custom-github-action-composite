@@ -10,7 +10,6 @@ inputs:
 outputs:
   time:
     description: "The time we greeted you"
-    required: true
 
 runs:
   using: "composite"
