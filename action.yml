@@ -19,4 +19,4 @@ runs:
     - run: hello.sh
       shell: bash
       env:
-        NAME: ${{ inputs.name }}
+        NAME: ${{ inputs.who-to-greet }}
