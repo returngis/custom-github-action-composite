@@ -1,3 +1,3 @@
 echo "Hello, $NAME"
 
-echo "::set-output name=time::$(date)"
+echo "time=$(date)" >> $GITHUB_OUTPUT
