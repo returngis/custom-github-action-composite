@@ -1,0 +1,21 @@
+name: "Custom GitHub Action Composite demo"
+description: "Demo of a custom GitHub Action Composite"
+
+inputs:
+  who-to-greet:
+    description: "The name to say hello to"
+    required: true
+    default: "World"
+
+outputs:
+  time:
+    description: "The time we greeted you"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: hello.sh
+      shell: bash
+      env:
+        NAME: ${{ inputs.name }}
