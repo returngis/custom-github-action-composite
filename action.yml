@@ -27,4 +27,5 @@ runs:
       shell: bash
     - name: Send the output time back to the workflow
       run: echo "time=${{ steps.hello-script.outputs.time }}" >> $GITHUB_OUTPUT
+      shell: bash
       
