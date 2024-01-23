@@ -8,15 +8,20 @@ inputs:
     default: "World"
 
 outputs:
-  time:
-    description: "The time we greeted you"
+  time: # id of output
+    description: 'The time we greeted you'
 
 runs:
   using: "composite"
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: hello.sh
+    - name: Call script
+      id: hello-script
+      run: hello.sh
       shell: bash
       env:
         NAME: ${{ inputs.who-to-greet }}
+    - name: Echo time
+      run: echo "The time was ${{ steps.hello-script.outputs.time }}"
+      shell: bash
