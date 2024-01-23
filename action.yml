@@ -10,6 +10,7 @@ inputs:
 outputs:
   time: # id of output
     description: 'The time we greeted you'
+    value: ${{ steps.hello-script.outputs.time }}
 
 runs:
   using: "composite"
@@ -22,12 +23,12 @@ runs:
       shell: bash
       env:
         NAME: ${{ inputs.who-to-greet }}
-    - name: Echo time
-      run: echo "The time was ${{ steps.hello-script.outputs.time }}"
-      shell: bash
-    - name: Send the output time back to the workflow
-      run: |
-        time="${{ steps.hello-script.outputs.time }}"
-        echo "time=$time" >> $GITHUB_OUTPUT
-      shell: bash
+    # - name: Echo time
+    #   run: echo "The time was ${{ steps.hello-script.outputs.time }}"
+    #   shell: bash
+    # - name: Send the output time back to the workflow
+    #   run: |
+    #     time="${{ steps.hello-script.outputs.time }}"
+    #     echo "time=$time" >> $GITHUB_STATE
+    #   shell: bash
       
